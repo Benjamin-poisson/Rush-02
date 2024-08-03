@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/03 19:31:35 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/03 20:09:00 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	ft_strslen(char **str)
 	return (i);
 }
 
-void	split_list(char **list, char **number_list, char **word_list)
+void	split_list(char **list, char ***number_list, char ***word_list)
 {
 	int	i;
 	int	i_number;
@@ -102,25 +102,23 @@ void	split_list(char **list, char **number_list, char **word_list)
 	i = -1;
 	i_word = 0;
 	i_number = 0;
-	number_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2) + 1);
-	word_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2) + 1);
+	*number_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2 + 1));
+	*word_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2 + 1));
 	while (list[++i])
-	{
+	{void	split_list(char **list, char ***number_list, char ***word_list)
 		if (i % 2 == 1)
 		{
-			word_list[i_word] = malloc(sizeof(char) * ft_strlen(list[i]));
-			ft_strcpy(word_list[i_word++], list[i]);
-			printf("%s\n", word_list[i_word - 1]);
+			(*word_list)[i_word] = malloc(sizeof(char) * (ft_strlen(list[i]) + 1));
+			ft_strcpy((*word_list)[i_word++], list[i]);
 		}
 		else
 		{
-			number_list[i_number] = malloc(sizeof(char) * ft_strlen(list[i]));
-			ft_strcpy(number_list[i_number++], list[i]);
-			printf("%s\n", number_list[i_number - 1]);
+			(*number_list)[i_number] = malloc(sizeof(char) * (ft_strlen(list[i]) + 1));
+			ft_strcpy((*number_list)[i_number++], list[i]);
 		}
 	}
-	number_list[i_number] = 0;
-	word_list[i_word] = 0;
+	(*number_list)[i_number] = NULL;
+	(*word_list)[i_word] = NULL;
 }
 
 int	rush(char *str)
@@ -135,7 +133,7 @@ int	rush(char *str)
 	list = create_list("./numbers.dict");
 	list2 = ft_split(list, " +-:\n");
 	count = 0;
-	split_list(list2, nb, word);
+	split_list(list2, &nb, &word);
 	int i = 0;
 	while(i <= 41)
 	{
