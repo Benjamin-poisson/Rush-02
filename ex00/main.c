@@ -6,53 +6,67 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/03 15:30:28 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/03 17:38:11 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "./split/ft_split.c"
+#include "utils.h"
 
-char	**ft_split(char *str, char *charset);
+int	files_count_char(char *file_name)
+{
+	int	count;
+	t_file	files;
+	
+	count = 0;
+	files.file = open(file_name, O_RDONLY);
+	if (files.file == -1)
+		return (-401);
+	files.size = 1;
+	while (files.size != 0)
+	{
+		files.size = read(files.file, files.buff, 1);
+		count++;
+	}
+	close(files.file);
+	return (count);
+}
+
+char *create_list(char *file_name)
+{
+	t_file	files;
+	int		i;
+	char	*list;
+
+	i = 0;
+	files.size = files_count_char(file_name);
+	if (files.size == -401)
+		return (NULL);
+	list = malloc(sizeof(char) * files.size + 1);
+	if (list == NULL)
+		return (NULL);
+	files.file = open(file_name, O_RDONLY);
+	if (files.file == -1)
+		return (NULL);
+	files.size = 1;
+	while (files.size != 0)
+	{
+		files.size = read(files.file, files.buff, 1);
+		list[i] = *files.buff;
+		i++;
+	}
+	close(files.file);
+	return (list);
+}
 
 int	rush(char *str)
 {
-	char buf[1];
-	int size = 1;
-	int	fd = 0;
 	int	count = 0;
 	char *list = NULL;
 	char **list2 = NULL;
 
 	(void)str;
-	fd = open("./numbers.dict", O_RDONLY );
-	if (fd == -1)
-		return (1);
-	while(size != 0)
-	{
-		size = read(fd, buf, 1);
-		count++;
-	}
-	close (fd);
-	list = malloc((sizeof(char) * count )+ 1);
-	if (list == NULL)
-		return 1;
-	fd = open("./numbers.dict", O_RDONLY );
-	if (fd == -1)
-		return (1);
-	count = 0;
-	size = 1;
-	while(size != 0)
-	{
-		size = read(fd, buf, 1);
-		list[count] = *buf;
-		count++;
-	}
-	close (fd);
-	list2 = ft_split(list, " :\n");
+	list = create_list("./numbers.dict");
+	list2 = ft_split(list, " +-:\n");
 	count = 0;
 	while(list2[count] != 0)
 	{
