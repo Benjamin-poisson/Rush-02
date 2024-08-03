@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:18:43 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/03 17:42:43 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/03 19:14:33 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 #include <stdio.h>
 
 char	**ft_split(char *str, char *charset);
-int		files_count_char(char *file_name);
+int		file_count_char(char *file_name);
 char	*create_list(char *file_name);
+char	*ft_strcpy(char *dest, char *src);
+int		ft_strlen(char *str);
 
 typedef struct s_file
 {
