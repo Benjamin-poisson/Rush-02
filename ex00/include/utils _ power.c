@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   puissance_10.c                                     :+:      :+:    :+:   */
+/*   utils _ power.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:34:50 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/08/04 13:00:51 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:37:22 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,16 @@ void	ft_print_ten(char **list_number, char **list_name, char *ten, char *unity)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (ten[0] == '1')
 	{
-		while(list_number[i])
+		while(list_number[++i])
 		{
 			if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == unity[0])
 			{
 				ft_putstr(list_name[i]);
 				return ;
 			}
-			i++;
 		}
 		return;
 	}
@@ -131,61 +130,65 @@ void	print_under_3digits(char **list_number, char **list_name, char *number)
 }
 
 void	ft_print_power_of_ten2(char **list_number, char **list_name, char *number,
-				t_incrementeur *n, int *reduction)
+				t_incrementeur *n)
 {
 		if (ft_strlen(number) == (ft_strlen(list_number[n->j]) + 1))
 		{
 				ft_print_ten(list_number, list_name, &number[0], &number[1]);
-				*reduction = 2;
+				n->reduct = 2;
 		}
 		else if (ft_strlen(number) == (ft_strlen(list_number[n->j]) + 2))
 		{
 				ft_print_hundred(list_number, list_name, &number[0], &number[1], &number[2]);
-				*reduction = 3;
+				n->reduct = 3;
 		}
 		if (number[0] != '0')
 			ft_putstr(list_name[n->i - 1]);
 }
-
-char	*ft_print_power_of_ten(char **list_number, char **list_name, char *number)
+char	*ft_print_power_of_ten1(char **list_number, char **list_name, char *number, t_incrementeur *n)
+{
+	while (list_number[n->i++])
+	{
+		if (is_power_ten(list_number[n->i]))
+		{
+			if (n->j == -1)
+				n->j = n->i;
+			if (ft_strlen(list_number[n->i]) == ft_strlen(number))
+			{
+				ft_print_unity(list_number, list_name, &number[0]);
+				if (number[0] != '0')
+					ft_putstr(list_name[n->i]);
+				n->reduct = 1; 
+				break ;
+			}
+			else if (n->i != 0 && ft_strlen(number) < ft_strlen(list_number[n->i]) &&
+						ft_strlen(number) > ft_strlen(list_number[n->j]))
+			{
+				ft_print_power_of_ten2(list_number, list_name, number, n);
+				break ;
+			}
+			n->j = n->i;
+		}
+	}
+	ft_print_power_of_ten(list_number, list_name, &number[n->reduct]);
+	return (number);
+}
+void	ft_print_power_of_ten(char **list_number, char **list_name, char *number)
 {
 	t_incrementeur n;
-	int	reduction;
 
-	reduction = 0;
+	n.reduct = 0;
 	n.i = 0;
 	n.j = -1;
 	if (ft_strlen(number) <= 3)
 	{
 		print_under_3digits(list_number, list_name, number);
-		return (number);
+		return ;
 	}
-	while (list_number[n.i++])
-	{
-		if (is_power_ten(list_number[n.i]))
-		{
-			if (n.j == -1)
-				n.j = n.i;
-			if (ft_strlen(list_number[n.i]) == ft_strlen(number))
-			{
-				ft_print_unity(list_number, list_name, &number[0]);
-				if (number[0] != '0')
-					ft_putstr(list_name[n.i]);
-				reduction = 1; 
-				break ;
-			}
-			else if (n.i != 0 && ft_strlen(number) < ft_strlen(list_number[n.i]) &&
-					   	ft_strlen(number) > ft_strlen(list_number[n.j]))
-			{
-				ft_print_power_of_ten2(list_number, list_name, number, &n, &reduction);
-				break ;
-			}
-			n.j = n.i;	
-		}
-	}
-	ft_print_power_of_ten(list_number, list_name, &number[reduction]);
-	return (number);
+	ft_print_power_of_ten1(list_number, list_name, number, &n);
+	
 }
+
 /*
 int	main(void)
  {
