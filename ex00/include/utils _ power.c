@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:34:50 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/08/04 15:10:07 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:03:35 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,16 @@ void	ft_print_ten(char **list_number, char **list_name,
 	i = -1;
 	while (list_number[++i])
 	{
-		if (ten[0] == '1')
+		while (ten[0] == '1')
 		{	
 			if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0]
 				&& list_number[i][1] == unity[0])
 			{
-				ft_putstr(list_name[i], 0);
+				ft_putstr(list_name[i++], 0);
 				return ;
 			}
+			else
+				i++;
 		}
 		if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0]
 			&& list_number[i][1] == '0')
