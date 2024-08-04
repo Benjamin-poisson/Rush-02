@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 09:59:47 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 11:12:56 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:51:21 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	split_list(char **list, char ***number_list, char ***word_list)
 	}
 	(*number_list)[i_number] = NULL;
 	(*word_list)[i_word] = NULL;
-	free_2d(list);
 }
 
 void	free_2d(char **list)

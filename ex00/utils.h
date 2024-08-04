@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:18:43 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 11:13:05 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:28:03 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@
 # include <stdlib.h>
 # include <fcntl.h>
 #include <stdio.h>
+
+typedef struct s_file
+{
+	int		file;
+	char	buff[1];
+	int		size;
+} t_file ;
+
+typedef	struct s_incrementeur
+{
+	int	i;
+	int	j;
+} t_incrementeur;
 
 //___________STRING___________
 char	**ft_split(char *str, char *charset);
@@ -44,18 +57,5 @@ int		is_power_ten(char * number);
 int		get_max_number(int ac, char **av);
 int		gest_error(int ac, char **av);
 int		gest_error_dict(int ac, char **av);
-
-typedef struct s_file
-{
-	int		file;
-	char	buff[1];
-	int		size;
-} t_file ;
-
-typedef	struct s_incrementeur
-{
-	int	i;
-	int	j;
-} t_incrementeur;
 
 #endif

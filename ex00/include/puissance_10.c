@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:34:50 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/08/04 11:09:47 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:55:57 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_print_ten(char **list_number, char **list_name, char *ten, char *unity)
 			ft_putstr(list_name[i]);
 			ft_print_unity(list_number, list_name, unity);
 		}
-		if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == unity[0])
+		if (ten[0] == '1' && ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == unity[0])
 			ft_putstr(list_name[i]);
 		i++;
 	}
@@ -128,6 +128,7 @@ char	*ft_print_power_of_ten(char **list_number, char **list_name, char *number)
 	t_incrementeur n;
 	int	reduction;
 
+	reduction = 0;
 	n.i = 0;
 	n.j = -1;
 	if (ft_strlen(number) <= 3)
@@ -161,13 +162,13 @@ char	*ft_print_power_of_ten(char **list_number, char **list_name, char *number)
 	return (number);
 }
 
-int	main(void)
-{
-	char	*l1[] = {"2","3","30","101", "100", "1000", "1000000", 0};
-	char	*l2[] = {"deux","trois","trente","cent-un", "cent", "mille", "million"};
-	char	nbr[] = "2330132";
+// int	main(void)
+// {
+// 	char	*l1[] = {"2","3","30","101", "100", "1000", "1000000", 0};
+// 	char	*l2[] = {"deux","trois","trente","cent-un", "cent", "mille", "million"};
+// 	char	nbr[] = "2330132";
 
-	ft_print_power_of_ten(l1, l2, nbr);
-}
+// 	ft_print_power_of_ten(l1, l2, nbr);
+// }
 
 

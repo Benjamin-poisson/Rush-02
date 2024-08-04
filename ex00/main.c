@@ -6,48 +6,39 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 10:34:51 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:44:13 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int	rush(char *str)
-{
-	int	count = 0;
-	char *list = NULL;
-	char **list2 = NULL;
-	char **nb = NULL;
-	char **word = NULL;
-
-	(void)str;
-	list = create_list("./numbers.dict");
-	list2 = ft_split(list, " +-:\n");
-	free(list);
-	count = 0;
-	split_list(list2, &nb, &word);
-	sort_list(nb, word);
-	int i = 0;
-	while(nb[i] != 0 || word[i] != 0)
-	{
-		printf("%s\n", nb[i]);
-		printf("%s\n", word[i]);
-		i++;
-	}
-	free_2d(nb);
-	free_2d(word);
-	return (0);
-}
-
-
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
-	if (rush(av[1]))
-	{
-		write(1, "ERROR\n", 6);
+	char *list;
+	char **big_list;
+	char **number_list;
+	char **word_list;
+
+	list = NULL;
+	big_list = NULL;
+	number_list = NULL;
+	word_list = NULL;
+	if (gest_error(ac, av))
 		return (1);
-	}
-	return (0);
+	if (gest_error_dict(ac, av))
+		return (1);
+	if (ac == 3)
+		list = create_list(av[1]);
+	list = create_list("./numbers.dict");
+	big_list = ft_split(list, " +-:\n");
+	split_list(big_list, &number_list, &word_list);
+	sort_list(number_list, word_list);
+	//traitement du 0;
+	if (ac == 3)
+		ft_print_power_of_ten(number_list, word_list, av[2]);
+	ft_print_power_of_ten(number_list, word_list, av[1]);
+	free(list);
+	free_2d(big_list);
+	free_2d(number_list);
+	free_2d(word_list);
 }

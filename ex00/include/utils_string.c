@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 09:59:49 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 11:13:00 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:53:58 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_strslen(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != 0)
 		i++;
 	return (i);
 }
@@ -65,4 +65,5 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+	write(1, " ", 1);
 }
