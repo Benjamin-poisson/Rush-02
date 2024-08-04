@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 12:18:34 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 12:24:31 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ int main(int ac, char **av)
 	list.big = ft_split(list.small, " +-:\n");
 	split_list(list.big, &list.number, &list.word);
 	sort_list(list.number, list.word);
-	//traitement du 0;
 	if (ac == 3)
+	{
+		unique_zero(list.number, list.word, av[2]);
 		ft_print_power_of_ten(list.number, list.word, av[2]);
-	ft_print_power_of_ten(list.number, list.word, av[1]);
+	}
+	else
+	{
+		ft_print_power_of_ten(list.number, list.word, av[1]);
+		unique_zero(list.number, list.word, av[1]);
+	}
 	free(list.small);
 	free_2d(list.big);
 	free_2d(list.number);

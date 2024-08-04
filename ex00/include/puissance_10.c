@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:34:50 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/08/04 12:18:13 by jguaglio         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:00:51 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,26 @@ void	ft_print_ten(char **list_number, char **list_name, char *ten, char *unity)
 	int	i;
 
 	i = 0;
+	if (ten[0] == '1')
+	{
+		while(list_number[i])
+		{
+			if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == unity[0])
+			{
+				ft_putstr(list_name[i]);
+				return ;
+			}
+			i++;
+		}
+		return;
+	}
 	while (list_number[i])
 	{
-		if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && unity[0] == '0')
+		if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == '0')
 		{
 			ft_putstr(list_name[i]);
 			ft_print_unity(list_number, list_name, unity);
 			return;
-		}
-		if (ten[0] == '1' && ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == unity[0])
-		{
-			ft_putstr(list_name[i]);
-			return ;
 		}
 		i++;
 	}
@@ -98,8 +106,7 @@ void	ft_print_hundred(char **list_number, char **list_name, char *hundred, char 
 		ft_print_ten(list_number, list_name, ten, unity);
 		return ;
 	}
-	if (hundred[0] != '1')
-		ft_print_unity(list_number, list_name, hundred);
+	ft_print_unity(list_number, list_name, hundred);
 	while (list_number[i])
 	{
 		if (ft_strlen(list_number[i]) == 3 && is_power_ten(list_number[i]))
