@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:18:43 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 11:28:03 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 12:17:03 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef	struct s_incrementeur
 	int	i;
 	int	j;
 } t_incrementeur;
+
+typedef struct s_list
+{
+	char *small;
+	char **big;
+	char **number;
+	char **word;
+} t_list;
 
 //___________STRING___________
 char	**ft_split(char *str, char *charset);
