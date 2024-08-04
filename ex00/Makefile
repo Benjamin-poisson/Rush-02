@@ -6,7 +6,7 @@
 #    By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 10:40:15 by bepoisso          #+#    #+#              #
-#    Updated: 2024/08/04 13:04:18 by bepoisso         ###   ########.fr        #
+#    Updated: 2024/08/04 16:58:43 by bepoisso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ EXEC=main
 all: $(EXEC)
 
 main:
-	$(CC) main.c $(INC) $(CFLAGS)
+	$(CC) main.c -o rush-02 $(INC) $(CFLAGS)
 
 fclean:
 	rm -rf *.o *.out

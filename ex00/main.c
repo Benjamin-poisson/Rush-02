@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 16:31:25 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:25:13 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ void	rush(int ac, char **av, t_list list)
 		list.small = create_list(av[1]);
 	else
 		list.small = create_list("numbers.dict");
-	list.big = ft_split(list.small, " +-:\n");
+	list.big = ft_split(list.small, " +-:\t\n\r\v\f");
 	split_list(list.big, &list.number, &list.word);
 	sort_list(list.number, list.word);
+	if (gest_max_numer(list.number, ac, av))
+		return ;
 	if (if_nice_dict(list))
 	{
 		ultimate_free(list);
@@ -87,9 +89,7 @@ int	main(int ac, char **av)
 	list.big = NULL;
 	list.number = NULL;
 	list.word = NULL;
-	if (gest_error(ac, av))
-		return (1);
-	if (gest_error_dict(ac, av))
+	if (function_error_all(ac, av))
 		return (1);
 	rush(ac, av, list);
 	write(1, "\n", 1);

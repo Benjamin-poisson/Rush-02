@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:18:43 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 15:07:31 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:17:33 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,11 @@ void	ft_print_power_of_ten2(char **list_number, char **list_name,
 void	print_under_3digits(char **list_number, char **list_name, char *number);
 int		is_power_ten(char *number);
 void	unique_zero(char **list_number, char **list_name, char *number);
+int		supp0(char *number);
 //___________ERROR___________
-int		get_max_number(int ac, char **av);
 int		gest_error(int ac, char **av);
 int		gest_error_dict(int ac, char **av);
+int		gest_max_numer(char **list, int ac, char **av);
+int		function_error_all(int ac, char **av);
 
 #endif
