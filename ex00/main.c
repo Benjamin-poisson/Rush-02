@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/03 20:09:00 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 08:52:13 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	split_list(char **list, char ***number_list, char ***word_list)
 	*number_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2 + 1));
 	*word_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2 + 1));
 	while (list[++i])
-	{void	split_list(char **list, char ***number_list, char ***word_list)
+	{
 		if (i % 2 == 1)
 		{
 			(*word_list)[i_word] = malloc(sizeof(char) * (ft_strlen(list[i]) + 1));
