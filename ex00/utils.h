@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:18:43 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 10:09:20 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 10:29:55 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 char	**ft_split(char *str, char *charset);
 char	*ft_strcpy(char *dest, char *src);
 int		ft_strlen(char *str);
+int		ft_strslen(char **str);
 void	ft_putstr(char *str);
 void	ft_swap(char **a, char **b);
 //___________LIST___________
