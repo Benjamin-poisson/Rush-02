@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:34:50 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/08/04 13:37:22 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:49:48 by jguaglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	unique_zero(char **list_number, char **list_name, char *number)
 	{
 		while (list_number[i])
 		{
-			if (list_number[i][0] == '0')
+			if (number[0] == '0')
 				ft_putstr(list_name[i]);
 			i++;
 		}
@@ -35,11 +35,11 @@ int	is_power_ten(char * number)
 		i = 0;
 		while (number[i])
 		{
-				if (number[0] != '1')
-						return (0);
-				if (i != 0 && number[i] != '0')
-						return (0);
-				i++;
+			if (number[0] != '1')
+				return (0);
+			if (i != 0 && number[i] != '0')
+				return (0);
+			i++;
 		}
 		return (1);
 }
@@ -58,7 +58,7 @@ void	ft_print_unity(char **list_number, char **list_name, char *unity)
 			if (list_number[i][0] == unity[0])
 			{
 				ft_putstr(list_name[i]);
-				break ;
+				return ;
 			}
 		}
 		i++;
@@ -83,7 +83,7 @@ void	ft_print_ten(char **list_number, char **list_name, char *ten, char *unity)
 		}
 		return;
 	}
-	while (list_number[i])
+	while (list_number[++i])
 	{
 		if (ft_strlen(list_number[i]) == 2 && list_number[i][0] == ten[0] && list_number[i][1] == '0')
 		{
@@ -91,7 +91,6 @@ void	ft_print_ten(char **list_number, char **list_name, char *ten, char *unity)
 			ft_print_unity(list_number, list_name, unity);
 			return;
 		}
-		i++;
 	}
 }
 
