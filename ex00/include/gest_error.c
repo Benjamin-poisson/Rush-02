@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   gest_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myacoub <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:40:59 by myacoub           #+#    #+#             */
-/*   Updated: 2024/08/03 20:08:02 by myacoub          ###   ########.fr       */
+/*   Updated: 2024/08/04 11:12:44 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../utils.h"
 
 int	gest_error(int ac, char **av)
 {

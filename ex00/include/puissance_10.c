@@ -3,53 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   puissance_10.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jguaglio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:34:50 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/08/04 10:57:51 by jguaglio         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:09:47 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "../utils.h"
 
-int	ft_strlen(char *str)
+int	is_power_ten(char * number)
 {
-	int	i;
-	
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+		int	i;
 
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, " ", 1);
-}
-
-int     is_power_ten(char * number)
-{
-        int     i;
-
-        i = 0;
-        while (number[i])
-        {
-                if (number[0] != '1')
-                        return (0);
-                if (i != 0 && number[i] != '0')
-                        return (0);
-                i++;
-        }
-        return (1);
+		i = 0;
+		while (number[i])
+		{
+				if (number[0] != '1')
+						return (0);
+				if (i != 0 && number[i] != '0')
+						return (0);
+				i++;
+		}
+		return (1);
 }
 
 void	ft_print_unity(char **list_number, char **list_name, char *unity)
@@ -125,28 +101,24 @@ void	print_under_3digits(char **list_number, char **list_name, char *number)
 	return ;
 }
 
-typedef	struct s_incrementeur
+
+
+
+
+void	ft_print_power_of_ten2(char **list_number, char **list_name, char *number,
+				t_incrementeur *n, int *reduction)
 {
-	int	i;
-	int	j;
-} t_incrementeur;
-
-
-
-void    ft_print_power_of_ten2(char **list_number, char **list_name, char *number,
-                t_incrementeur *n, int *reduction)
-{
-        if (ft_strlen(number) == (ft_strlen(list_number[n->j]) + 1))
-        {
-                ft_print_ten(list_number, list_name, &number[0], &number[1]);
-                *reduction = 2;
-        }
-        else if (ft_strlen(number) == (ft_strlen(list_number[n->j]) + 2))
-        {
-                ft_print_hundred(list_number, list_name, &number[0], &number[1], &number[2]);
-                *reduction = 3;
-        }
-        ft_putstr(list_name[n->i - 1]);
+		if (ft_strlen(number) == (ft_strlen(list_number[n->j]) + 1))
+		{
+				ft_print_ten(list_number, list_name, &number[0], &number[1]);
+				*reduction = 2;
+		}
+		else if (ft_strlen(number) == (ft_strlen(list_number[n->j]) + 2))
+		{
+				ft_print_hundred(list_number, list_name, &number[0], &number[1], &number[2]);
+				*reduction = 3;
+		}
+		ft_putstr(list_name[n->i - 1]);
 }
 
 
@@ -177,7 +149,7 @@ char	*ft_print_power_of_ten(char **list_number, char **list_name, char *number)
 				break;
 			}
 			else if (n.i != 0 && ft_strlen(number) < ft_strlen(list_number[n.i]) &&
-				       	ft_strlen(number) > ft_strlen(list_number[n.j]))
+					   	ft_strlen(number) > ft_strlen(list_number[n.j]))
 			{
 				ft_print_power_of_ten2(list_number, list_name, number, &n, &reduction);
 				break ;

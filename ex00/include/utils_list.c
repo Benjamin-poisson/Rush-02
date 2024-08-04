@@ -6,11 +6,11 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 09:59:47 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 10:02:27 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:12:56 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../utils.h"
 
 int	file_count_char(char *file_name)
 {

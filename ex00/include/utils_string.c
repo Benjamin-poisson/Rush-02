@@ -6,11 +6,11 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 09:59:49 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 10:04:17 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:13:00 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../utils.h"
 
 int	ft_strlen(char *str)
 {

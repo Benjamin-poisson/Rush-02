@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jguaglio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 17:28:33 by jguaglio          #+#    #+#             */
-/*   Updated: 2024/07/30 20:23:49 by jguaglio         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:12:30 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_is_sep(char *charset, char c);
 
