@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 09:59:47 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 13:45:44 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:48:44 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	file_count_char(char *file_name)
 {
-	int	count;
+	int		count;
 	t_file	files;
-	
+
 	count = 0;
 	files.file = open(file_name, O_RDONLY);
 	if (files.file == -1)
@@ -31,7 +31,7 @@ int	file_count_char(char *file_name)
 	return (count);
 }
 
-char *create_list(char *file_name)
+char	*create_list(char *file_name)
 {
 	t_file	files;
 	int		i;
@@ -61,30 +61,30 @@ char *create_list(char *file_name)
 
 void	split_list(char **list, char ***number_list, char ***word_list)
 {
-	int	i;
-	int	i_number;
-	int	i_word;
+	t_incr	i;
 
-	i = -1;
-	i_word = 0;
-	i_number = 0;
+	i.i = -1;
+	i.i_word = 0;
+	i.i_number = 0;
 	*number_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2 + 1));
 	*word_list = (char **)malloc(sizeof(char *) * (ft_strslen(list) / 2 + 1));
-	while (list[++i])
+	while (list[++i.i])
 	{
-		if (i % 2 == 1)
+		if (i.i % 2 == 1)
 		{
-			(*word_list)[i_word] = malloc(sizeof(char) * (ft_strlen(list[i]) + 1));
-			ft_strcpy((*word_list)[i_word++], list[i]);
+			(*word_list)[i.i_word] = malloc(sizeof(char)
+					* (ft_strlen(list[i.i]) + 1));
+			ft_strcpy((*word_list)[i.i_word++], list[i.i]);
 		}
 		else
 		{
-			(*number_list)[i_number] = malloc(sizeof(char) * (ft_strlen(list[i]) + 1));
-			ft_strcpy((*number_list)[i_number++], list[i]);
+			(*number_list)[i.i_number] = malloc(sizeof(char)
+					* (ft_strlen(list[i.i]) + 1));
+			ft_strcpy((*number_list)[i.i_number++], list[i.i]);
 		}
 	}
-	(*number_list)[i_number] = NULL;
-	(*word_list)[i_word] = NULL;
+	(*number_list)[i.i_number] = NULL;
+	(*word_list)[i.i_word] = NULL;
 }
 
 void	free_2d(char **list)
@@ -109,7 +109,7 @@ void	sort_list(char **number, char **word)
 	while (number[i + 1] != 0)
 	{
 		j = 0;
-		while(number[j + 1] != 0)
+		while (number[j + 1] != 0)
 		{
 			if (ft_strlen(number[j]) > ft_strlen(number[j + 1]))
 			{

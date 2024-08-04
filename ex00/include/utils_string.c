@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 09:59:49 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 11:53:58 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:49:12 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ char	*ft_strcpy(char *dest, char *src)
 
 void	ft_swap(char **a, char **b)
 {
-	char *temp;
+	char	*temp;
 
 	temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr(char *str, int nbr)
 {
 	int	i;
 
@@ -65,5 +65,6 @@ void	ft_putstr(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
-	write(1, " ", 1);
+	if (nbr == 0)
+		write(1, " ", 1);
 }

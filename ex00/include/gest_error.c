@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:40:59 by myacoub           #+#    #+#             */
-/*   Updated: 2024/08/04 13:45:13 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 14:50:33 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	gest_error(int ac, char **av)
 	}
 	return (0);
 }
+
 int	gest_error_dict(int ac, char **av)
 {
 	int	i;
@@ -56,6 +57,7 @@ int	gest_error_dict(int ac, char **av)
 	}
 	return (0);
 }
+
 int	get_max_number(int ac, char **av)
 {
 	int	i;
@@ -66,8 +68,8 @@ int	get_max_number(int ac, char **av)
 		while (av[1])
 			i++;
 		i--;
-		if (av[1][i] == 't' && av[1][i -1] == 'c' && av[1][i -2] == 'i' 
-		&& av[1][i -3] == 'd' && av[1][i -4] == '.')
+		if (av[1][i] == 't' && av[1][i -1] == 'c' && av[1][i -2] == 'i'
+			&& av[1][i -3] == 'd' && av[1][i -4] == '.')
 			return (1);
 		write(1, "Error\n", 6);
 		return (1);
