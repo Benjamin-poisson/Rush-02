@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 14:14:11 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 12:24:31 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:47:22 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(int ac, char **av)
 {
 	t_list list;
+
 	list.small = NULL;
 	list.big = NULL;
 	list.number = NULL;
@@ -43,4 +44,5 @@ int main(int ac, char **av)
 	free_2d(list.big);
 	free_2d(list.number);
 	free_2d(list.word);
+	write(1, "\n", 1);
 }

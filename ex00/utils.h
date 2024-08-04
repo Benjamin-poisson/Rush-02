@@ -6,7 +6,7 @@
 /*   By: bepoisso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:18:43 by bepoisso          #+#    #+#             */
-/*   Updated: 2024/08/04 13:29:20 by bepoisso         ###   ########.fr       */
+/*   Updated: 2024/08/04 13:41:47 by bepoisso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ void	free_2d(char **list);
 void	sort_list(char **number, char **word);
 //___________POWER___________
 void	ft_print_power_of_ten(char **list_number, char **list_name, char *number);
-char	*ft_print_power_of_ten1(char **list_number, char **list_name, char *number, t_incrementeur *n);
+char	*ft_print_power_of_ten1(char **list_number, char **list_name, char *number,
+			t_incrementeur *n);
 void	ft_print_unity(char **list_number, char **list_name, char *unity);
 void	ft_print_ten(char **list_number, char **list_name, char *ten, char *unity);
-void	ft_print_hundred(char **list_number, char **list_name, char *hundred, char *ten, char *unity);
+void	ft_print_hundred(char **list_number, char **list_name, char *hundred,
+			char *ten, char *unity);
 void	ft_print_power_of_ten2(char **list_number, char **list_name, char *number,
 				t_incrementeur *n);
 void	print_under_3digits(char **list_number, char **list_name, char *number);
